@@ -92,14 +92,14 @@ public class test extends SikulixIDE {
     }
     @org.junit.Test
     public void SikuliValidateGetExt() {
-        SikulixIDE IDE=  SikulixIDE.get();
+        SikulixIDE IDE = SikulixIDE.get();
         IDE.start();
         IDE.setWindow();
         IDE.doShow();
-        PaneContext context=IDE.getContext();
+        PaneContext context = IDE.getContext();
         context.getExt();
-        assertEquals(context.getExt(),"py");
-
+        assertEquals(context.getExt(), "py");
+    }
 
     
     @Test
