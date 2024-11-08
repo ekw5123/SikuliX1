@@ -5,10 +5,9 @@ import org.junit.Test;
 import javax.swing.*;
 import java.awt.*;
 
-
 import static org.junit.Assert.*;
 
-public class test extends SikulixIDE {
+public class SikulixIDETests extends SikulixIDE {
 
     private SikulixIDE ide;
 
@@ -17,7 +16,6 @@ public class test extends SikulixIDE {
         ide = SikulixIDE.get();
 
     }
-
 
     @Test
     public void testSikuliIDESetWindow() {
@@ -79,6 +77,7 @@ public class test extends SikulixIDE {
 //        IDE.terminate();
 
     }
+
     @org.junit.Test
     public void SikuliValidateGetFileName() {
         SikulixIDE IDE=  SikulixIDE.get();
@@ -101,7 +100,7 @@ public class test extends SikulixIDE {
         assertEquals(context.getExt(), "py");
     }
 
-    
+
     @Test
     public void testDoHideWithWaitTime() {
         // Hide IDE with wait time and verify visibility
@@ -109,7 +108,6 @@ public class test extends SikulixIDE {
         ide.doHide(waitTime);
         assertFalse("IDE should be hidden after doHide with waitTime is called", SikulixIDE.notHidden());
     }
-
 
 
     @org.junit.Test
@@ -136,6 +134,4 @@ public class test extends SikulixIDE {
 
     }
 
-
 }
-
