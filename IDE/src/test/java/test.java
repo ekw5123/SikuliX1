@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 
 import static org.junit.Assert.*;
@@ -70,7 +71,6 @@ public class test extends SikulixIDE {
         SikulixIDE IDE=  SikulixIDE.get();
         IDE.start();
         IDE.setWindow();
-//        IDE.start();
 //      validate that sikulixIDE is hidden by default baseline test
         assertEquals(IDE.notHidden(),false);
         IDE.doShow();
@@ -118,22 +118,36 @@ public class test extends SikulixIDE {
         IDE.start();
         IDE.setWindow();
         IDE.doShow();
+        PaneContext context=IDE.getContext();
+        File file=context.getFile();
+        assertEquals("check file name exists",file.getName(), "sxtemp1.py");
+        assertEquals("check path exists", file.getPath(), "sxtemp1\\sxtemp1.py");
+        assertTrue("check that file exists", file.exists());
 
     }
     @org.junit.Test
     public void SikuliValidateSave() {
         SikulixIDE IDE=  SikulixIDE.get();
+        File ex2= new File("sxtemp1\\sxtemp1.py");
         IDE.start();
         IDE.setWindow();
         IDE.doShow();
+        PaneContext context=IDE.getContext();
+//        assertTrue(context.load(ex2));
+        assertTrue((context.save()));
 
     }
-    public void SikuliValidateSaveAs() {
+    @Test
+    public void SikuliValidateLoad() {
         SikulixIDE IDE=  SikulixIDE.get();
+        File ex2= new File("sxtemp1\\sxtemp1.py");
         IDE.start();
         IDE.setWindow();
         IDE.doShow();
-
+        PaneContext context=IDE.getContext();
+        assertTrue(context.load(ex2));
+        assertTrue((context.save()));
+//        context.
     }
 
 
