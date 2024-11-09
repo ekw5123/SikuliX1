@@ -14,7 +14,6 @@ public class SikulixIDETests extends SikulixIDE {
     @Before
     public void setUp() {
         ide = SikulixIDE.get();
-
     }
 
     @Test
@@ -28,7 +27,7 @@ public class SikulixIDETests extends SikulixIDE {
     @Test
     public void testGetInstance() {
         // Verify that the singleton instance is non-null
-        assertNotNull("SikulixIDE instance should not be null", SikulixIDE.get());
+        assertNotNull("SikulixIDE instance should not be null", SikulixIDE.get()); //This returns the singleton
     }
 
 
@@ -106,7 +105,7 @@ public class SikulixIDETests extends SikulixIDE {
         // Hide IDE with wait time and verify visibility
         float waitTime = 0.5f;
         ide.doHide(waitTime);
-        assertFalse("IDE should be hidden after doHide with waitTime is called", SikulixIDE.notHidden());
+        assertFalse("IDE should be hidden after doHide with waitTime is called", SikulixIDE.notHidden()); //Do we need to thread sleep here?
     }
 
 
@@ -134,4 +133,38 @@ public class SikulixIDETests extends SikulixIDE {
 
     }
 
+    public void SikuliValidateselectFileToOpen() {
+        //todo
+    }
+
+    public void SikuliValidatefileSelected() {
+        //todo
+    }
+    public void SikuliValidateselectFileForSave() {
+        //todo
+    }
+    public void SikuliValidateexportAsZip() {
+        //todo
+    }
+    public void SikuliValidatereparseOnRenameImage() {
+        //todo
+    }
+    public void SikuliValidateReparseRenameImages() {
+        //todo
+    }
+    public void SikuliValidateGetImageNameFromLine() {
+        //todo
+    }
+    public void SikuliValidateShowPreferencesWindow() {
+        //todo
+    }
+    public void SikuliValidateRunNormal() {
+        //todo
+    }
+    public void SikuliValidateRunShowActions() {
+        //todo
+    }
+    public void SikuliValidateRunSelected() {
+        //todo
+    }
 }
