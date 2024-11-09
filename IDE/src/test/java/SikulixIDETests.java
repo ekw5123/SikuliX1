@@ -109,7 +109,7 @@ public class SikulixIDETests extends SikulixIDE {
     }
 
 
-    @org.junit.Test
+    @Test
     public void SikuliValidateGetFile() {
         SikulixIDE IDE=  SikulixIDE.get();
         IDE.start();
@@ -117,7 +117,7 @@ public class SikulixIDETests extends SikulixIDE {
         IDE.doShow();
 
     }
-    @org.junit.Test
+    @Test
     public void SikuliValidateSave() {
         SikulixIDE IDE=  SikulixIDE.get();
         IDE.start();
@@ -125,6 +125,8 @@ public class SikulixIDETests extends SikulixIDE {
         IDE.doShow();
 
     }
+
+    @Test
     public void SikuliValidateSaveAs() {
         SikulixIDE IDE=  SikulixIDE.get();
         IDE.start();
@@ -133,37 +135,47 @@ public class SikulixIDETests extends SikulixIDE {
 
     }
 
+    @Test
     public void SikuliValidateselectFileToOpen() {
         //todo
     }
-
+    @Test
     public void SikuliValidatefileSelected() {
         //todo
     }
+    @Test
     public void SikuliValidateselectFileForSave() {
         //todo
     }
+    @Test
     public void SikuliValidateexportAsZip() {
         //todo
     }
+    @Test
     public void SikuliValidatereparseOnRenameImage() {
         //todo
     }
+    @Test
     public void SikuliValidateReparseRenameImages() {
         //todo
     }
+    @Test
     public void SikuliValidateGetImageNameFromLine() {
         //todo
     }
+    @Test
     public void SikuliValidateShowPreferencesWindow() {
         //todo
     }
+    @Test
     public void SikuliValidateRunNormal() {
         //todo
     }
+    @Test
     public void SikuliValidateRunShowActions() {
         //todo
     }
+    @Test
     public void SikuliValidateRunSelected() {
         //todo
     }
