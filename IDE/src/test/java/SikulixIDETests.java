@@ -56,6 +56,8 @@ public class SikulixIDETests extends SikulixIDE {
 
     @Test
     public void testSetIDETitle() {
+        //Good for Domain Modeling
+
         // Set the title and verify it's set correctly
         String title = "Test Title";
         ide.setIDETitle(title);
@@ -133,6 +135,11 @@ public class SikulixIDETests extends SikulixIDE {
         IDE.setWindow();
         IDE.doShow();
 
+    }
+
+    @Test
+    public void SikuliValidateshowAfterStart() {
+        //Could do some interesting threaded tests here
     }
 
     @Test

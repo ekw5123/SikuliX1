@@ -10,11 +10,14 @@ import static org.junit.Assert.*;
 
 public class PaneContextTests extends SikulixIDE {
 
+    private SikulixIDE ide;
     private SikulixIDE.PaneContext pane;
 
     @Before
     public void setUp() {
-        pane = SikulixIDE.get().getContext(); // Is this right?
+        SikulixIDE.start();
+        ide = SikulixIDE.get();
+        pane = ide.getContext();
     }
 
     @Test
@@ -100,7 +103,7 @@ public class PaneContextTests extends SikulixIDE {
 
     @Test
     public void testsetImageFolder() {
-
+        //Good for GBT
     }
 
     @Test
@@ -110,7 +113,7 @@ public class PaneContextTests extends SikulixIDE {
 
     @Test
     public void testgetScreenshotFileString() {
-
+        //Decent for GBT
     }
 
     @Test
@@ -150,7 +153,7 @@ public class PaneContextTests extends SikulixIDE {
 
     @Test
     public void testdeleteNotUsedScreenshots() {
-
+        //Decent for GBT
     }
 
     @Test
@@ -185,7 +188,7 @@ public class PaneContextTests extends SikulixIDE {
 
     @Test
     public void testload() {
-
+        //Good for Domain Modeling
     }
 
     @Test
