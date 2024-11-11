@@ -136,6 +136,10 @@ public class test extends SikulixIDE {
 //        assertTrue(context.load(ex2));
         assertTrue((context.save()));
 
+//        validate the  loading invalid file and then attempting to save does not crash
+          File badPath = new File("badDirectory.py");
+          assertFalse("fails to load null file",context.load(badPath));
+          assertTrue((context.save()));
     }
     @Test
     public void SikuliValidateLoad() {
@@ -145,9 +149,19 @@ public class test extends SikulixIDE {
         IDE.setWindow();
         IDE.doShow();
         PaneContext context=IDE.getContext();
+//        validate save and load work as expected
         assertTrue(context.load(ex2));
         assertTrue((context.save()));
-//        context.
+
+//        validate loading invalid file throws exception
+        File ne = new File("");
+
+        assertFalse("fails to load null file",context.load(ne));
+
+//        validate the  loading file that does not exist fails without error
+        File badPath = new File("badDirectory.py");
+        assertFalse("fails to load null file",context.load(badPath));
+
     }
 
 
