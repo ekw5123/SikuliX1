@@ -8,10 +8,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
+
 
 public class PaneContextTests extends SikulixIDE {
 
@@ -160,5 +162,33 @@ public class PaneContextTests extends SikulixIDE {
             f.delete();
         }
         Dir.delete();
+    }
+
+    @Test
+    public void testsetIDETitle_ASCII() {
+        String germanString = "Entwickeln Sie mit Vergnügen";
+        byte[] germanBytes = germanString.getBytes();
+        String asciiEncodedString = new String(germanBytes, StandardCharsets.US_ASCII);
+        ide.setIDETitle(asciiEncodedString);
+        //ide.doShow(); //Debug and check encoding on strings
+        assertEquals("Strings no longer match!", ide.getTitle(), asciiEncodedString);
+    }
+
+    @Test
+    public void testsetIDETitle_UTF_8() {
+        String germanString = "Entwickeln Sie mit Vergnügen";
+        byte[] germanBytes = germanString.getBytes();
+        String asciiEncodedString = new String(germanBytes, StandardCharsets.UTF_8);
+        ide.setIDETitle(asciiEncodedString);
+        //ide.doShow(); //Debug and check encoding on strings
+        assertEquals("Strings no longer match!", ide.getTitle(), asciiEncodedString);
+    }
+
+    @Test
+    public void testsetIDETitle_Unicode() {
+        String encodedString = "Hello \u0057\u006F\u0072\u006C\u0064"; //Hello World in Unicode
+        ide.setIDETitle(encodedString);
+        //ide.doShow(); //Debug and check encoding on strings
+        assertEquals("Strings no longer match!", ide.getTitle(), encodedString);
     }
 }
