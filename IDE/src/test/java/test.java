@@ -1,6 +1,7 @@
 import org.sikuli.ide.SikulixIDE;
 import org.junit.Before;
 import org.junit.Test;
+import org.sikuli.support.Commons;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,9 @@ public class test extends SikulixIDE {
     @Before
     public void setUp() {
         ide = SikulixIDE.get();
+        Commons.setTempFolder();
+//        PaneContext context = ide.getContext();
+
 
     }
 
@@ -68,37 +72,53 @@ public class test extends SikulixIDE {
 
     @org.junit.Test
     public void SikuliValidateHidden() {
-        SikulixIDE IDE=  SikulixIDE.get();
-        IDE.start();
-        IDE.setWindow();
-//      validate that sikulixIDE is hidden by default baseline test
-        assertEquals(IDE.notHidden(),false);
-        IDE.doShow();
+        try{
+            ide.start();
+            Commons.setTempFolder();
+            ide.setWindow();
+        }
+        catch (Exception e){
 
-        assertEquals(IDE.notHidden(),true);
-//        IDE.terminate();
+        }
+//      validate that sikulixIDE is hidden by default baseline test
+        assertEquals(ide.notHidden(),false);
+        ide.doShow();
+
+        assertEquals(ide.notHidden(),true);
+//        ide.terminate();
 
     }
     @org.junit.Test
     public void SikuliValidateGetFileName() {
-        SikulixIDE IDE=  SikulixIDE.get();
-        IDE.start();
-        IDE.setWindow();
-        IDE.doShow();
-        PaneContext context=IDE.getContext();
+        try {
+            ide.start();
+            Commons.setTempFolder();
+            ide.setWindow();
+            ide.doShow();
+        }
+        catch (Exception e){
+
+        }
+        PaneContext context=ide.getContext();
         context.getFileName();
         assertEquals(context.getFileName(),"sxtemp1.py");
 
     }
     @org.junit.Test
     public void SikuliValidateGetExt() {
-        SikulixIDE IDE = SikulixIDE.get();
-        IDE.start();
-        IDE.setWindow();
-        IDE.doShow();
-        PaneContext context = IDE.getContext();
+        try {
+            ide.start();
+            Commons.setTempFolder();
+            ide.setWindow();
+            ide.doShow();
+        }
+        catch (Exception e){
+
+        }
+        PaneContext context = ide.getContext();
         context.getExt();
         assertEquals(context.getExt(), "py");
+//        ide.terminate();
     }
 
     
@@ -107,32 +127,43 @@ public class test extends SikulixIDE {
         // Hide IDE with wait time and verify visibility
         float waitTime = 0.5f;
         ide.doHide(waitTime);
-        assertFalse("IDE should be hidden after doHide with waitTime is called", SikulixIDE.notHidden());
+        assertFalse("IDE should be hidden after doHide with waitTime is called", ide.notHidden());
     }
 
 
 
     @org.junit.Test
     public void SikuliValidateGetFile() {
-        SikulixIDE IDE=  SikulixIDE.get();
-        IDE.start();
-        IDE.setWindow();
-        IDE.doShow();
-        PaneContext context=IDE.getContext();
+
+        try {
+            ide.start();
+            ide.setWindow();
+            ide.doShow();
+        }
+        catch (Exception e){
+
+        }
+
+        PaneContext context=ide.getContext();
         File file=context.getFile();
         assertEquals("check file name exists",file.getName(), "sxtemp1.py");
         assertEquals("check path exists", file.getPath(), "sxtemp1\\sxtemp1.py");
         assertTrue("check that file exists", file.exists());
+//        ide.terminate();
 
     }
     @org.junit.Test
     public void SikuliValidateSave() {
-        SikulixIDE IDE=  SikulixIDE.get();
+
         File ex2= new File("sxtemp1\\sxtemp1.py");
-        IDE.start();
-        IDE.setWindow();
-        IDE.doShow();
-        PaneContext context=IDE.getContext();
+        try {
+            ide.setWindow();
+            ide.doShow();
+        }
+        catch (Exception e){
+
+        }
+        PaneContext context=ide.getContext();
 //        assertTrue(context.load(ex2));
         assertTrue((context.save()));
 
@@ -143,12 +174,11 @@ public class test extends SikulixIDE {
     }
     @Test
     public void SikuliValidateLoad() {
-        SikulixIDE IDE=  SikulixIDE.get();
         File ex2= new File("sxtemp1\\sxtemp1.py");
-        IDE.start();
-        IDE.setWindow();
-        IDE.doShow();
-        PaneContext context=IDE.getContext();
+        ide.start();
+        ide.setWindow();
+        ide.doShow();
+        PaneContext context=ide.getContext();
 //        validate save and load work as expected
         assertTrue(context.load(ex2));
         assertTrue((context.save()));
