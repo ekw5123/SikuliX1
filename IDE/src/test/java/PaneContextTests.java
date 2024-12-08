@@ -207,15 +207,29 @@ public class PaneContextTests extends SikulixIDE {
         assertEquals("Strings no longer match!", ide.getTitle(), asciiEncodedString);
         App Calc= App.open("c:\\windows\\system32\\calc.exe");
 
+        wait(5000);
+        boolean x = Calc.hasFocus();
+        boolean y = Calc.focus();
+
         try{
-            Calc.focus();
+            assertTrue("Calculator app is focused",Calc.hasFocus());
         }
         catch (Exception e){
-            assertNotSame("catch error",e.getMessage(),"App.focus failed: no window for App_name_including_unicode_characters_and_English_also_PID");
+//            assertNotSame("catch error",e.getMessage(),"App.focus failed: no window for App_name_including_unicode_characters_and_English_also_PID");
         }
-
-
         assertTrue("Calculator app is running",Calc.isRunning());
+        Calc.close();
 
+    }
+    public static void wait(int ms)
+    {
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
     }
 }
