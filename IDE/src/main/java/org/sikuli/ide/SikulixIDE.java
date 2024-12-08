@@ -413,11 +413,11 @@ public class SikulixIDE extends JFrame {
     });
   }
 
-  CloseableTabbedPane getTabs() {
+  public CloseableTabbedPane getTabs() {
     return tabs;
   }
 
-  private CloseableTabbedPane tabs;
+  public CloseableTabbedPane tabs;
   //</editor-fold>
 
   //<editor-fold desc="03 PaneContext">
@@ -1482,7 +1482,7 @@ public class SikulixIDE extends JFrame {
     return "";
   }
 
-  String getLineTextAtCaret() {
+  public String getLineTextAtCaret() {
     return getActiveContext().getPane().getLineTextAtCaret();
   }
 
