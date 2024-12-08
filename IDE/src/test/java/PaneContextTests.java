@@ -1,8 +1,10 @@
+import org.jruby.RubyBoolean;
 import org.junit.BeforeClass;
 import org.sikuli.ide.EditorPane;
 import org.sikuli.ide.SikulixIDE;
 import org.junit.Before;
 import org.junit.Test;
+import org.sikuli.script.App;
 
 import javax.swing.*;
 import java.awt.*;
@@ -190,5 +192,30 @@ public class PaneContextTests extends SikulixIDE {
         ide.setIDETitle(encodedString);
         //ide.doShow(); //Debug and check encoding on strings
         assertEquals("Strings no longer match!", ide.getTitle(), encodedString);
+    }
+
+    @Test
+    public void VerifyDefect53() {
+//        defect 53 that attempting to launch the application with non ascii strings caused the app.focus command to
+//        throw an exception.  This test verifies that no exception is thrown and the application is launched
+        String nonascii = "Hello \u0057\u006F\u0072\u006C\u0064";
+//        String germanString = "Hello";
+        byte[] nonasciiBytes = nonascii.getBytes();
+        String asciiEncodedString = new String(nonasciiBytes, StandardCharsets.US_ASCII);
+        ide.setIDETitle(asciiEncodedString);
+        //ide.doShow(); //Debug and check encoding on strings
+        assertEquals("Strings no longer match!", ide.getTitle(), asciiEncodedString);
+        App Calc= App.open("c:\\windows\\system32\\calc.exe");
+
+        try{
+            Calc.focus();
+        }
+        catch (Exception e){
+            assertNotSame("catch error",e.getMessage(),"App.focus failed: no window for App_name_including_unicode_characters_and_English_also_PID");
+        }
+
+
+        assertTrue("Calculator app is running",Calc.isRunning());
+
     }
 }
