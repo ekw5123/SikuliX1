@@ -1,6 +1,5 @@
 import org.junit.BeforeClass;
 import org.sikuli.ide.SikulixIDE;
-import org.junit.Before;
 import org.junit.Test;
 import org.sikuli.support.Commons;
 

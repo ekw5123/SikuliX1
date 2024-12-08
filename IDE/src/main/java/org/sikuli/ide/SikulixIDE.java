@@ -519,7 +519,7 @@ public class SikulixIDE extends JFrame {
     context.notDirty();
   }
 
-  int alreadyOpen(File file) {
+  public int alreadyOpen(File file) {
     for (PaneContext context : contexts) {
       File folderOrFile = context.file;
       if (context.isBundle(file)) {
@@ -591,7 +591,7 @@ public class SikulixIDE extends JFrame {
     boolean dirty = false;
     boolean temp = false;
 
-    private PaneContext() {
+    PaneContext() {
     }
 
     public void focus() {
