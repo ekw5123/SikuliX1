@@ -498,8 +498,8 @@ public class SikulixIDE extends JFrame {
     context.setFile();
     context.create();
   }
+  public void createFileContext(File file) {
 
-  void createFileContext(File file) {
     final int pos = alreadyOpen(file);
     if (pos >= 0) {
       setActiveContext(pos);
