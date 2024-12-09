@@ -413,11 +413,11 @@ public class SikulixIDE extends JFrame {
     });
   }
 
-  CloseableTabbedPane getTabs() {
+  public CloseableTabbedPane getTabs() {
     return tabs;
   }
 
-  private CloseableTabbedPane tabs;
+  public CloseableTabbedPane tabs;
   //</editor-fold>
 
   //<editor-fold desc="03 PaneContext">
@@ -498,8 +498,8 @@ public class SikulixIDE extends JFrame {
     context.setFile();
     context.create();
   }
+  public void createFileContext(File file) {
 
-  void createFileContext(File file) {
     final int pos = alreadyOpen(file);
     if (pos >= 0) {
       setActiveContext(pos);
@@ -519,7 +519,7 @@ public class SikulixIDE extends JFrame {
     context.notDirty();
   }
 
-  int alreadyOpen(File file) {
+  public int alreadyOpen(File file) {
     for (PaneContext context : contexts) {
       File folderOrFile = context.file;
       if (context.isBundle(file)) {
@@ -591,7 +591,7 @@ public class SikulixIDE extends JFrame {
     boolean dirty = false;
     boolean temp = false;
 
-    private PaneContext() {
+    PaneContext() {
     }
 
     public void focus() {
@@ -1482,7 +1482,7 @@ public class SikulixIDE extends JFrame {
     return "";
   }
 
-  String getLineTextAtCaret() {
+  public String getLineTextAtCaret() {
     return getActiveContext().getPane().getLineTextAtCaret();
   }
 
